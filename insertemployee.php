@@ -170,12 +170,31 @@ function generateValidator()
         {
             for(var j = 1; j < uniqueEntity[i].length; j++)
             {
-                if(document.getElementById(uniqueEntity[i][0]).value === uniqueEntity[i][j])
+                if(document.getElementById(uniqueEntity[i][0]).value.replace(/\W/g, '') === uniqueEntity[i][j])
                 {
                     alert("Value " + uniqueEntity[i][j] + " already exists for " + uniqueEntity[i][0]);
                 }
             }
         }
     }
+
+    $('#ssn').keyup(function() {
+        var val = this.value.replace(/\D/g, '');
+        var newVal = '';
+        if(val.length > 4) {
+            this.value = val;
+        }
+        if((val.length > 3) && (val.length < 6)) {
+            newVal += val.substr(0, 3) + '-';
+            val = val.substr(3);
+        }
+        if (val.length > 5) {
+            newVal += val.substr(0, 3) + '-';
+            newVal += val.substr(3, 2) + '-';
+            val = val.substr(5);
+        }
+        newVal += val;
+        this.value = newVal;
+    });
 </script>
 </html>
