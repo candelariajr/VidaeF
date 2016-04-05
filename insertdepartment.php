@@ -61,7 +61,7 @@ function generateValidator()
 <body>
 <div class="container">
     <h2>Add new Department</h2>
-    <form class ="form-horizontal" role="form" action="submit.php" method="post" id="mainForm">
+    <form id="theForm" class ="form-horizontal" role="form" action="submit.php" method="post" id="mainForm">
         <input type="hidden" name="table" value="department"/>
         <fieldset>
             <legend>Departmental Information</legend>
@@ -110,6 +110,7 @@ function generateValidator()
 <script>
     function validate()
     {
+        var validState = 1;
         for(var i = 0; i < uniqueEntity.length; i++)
         {
             for(var j = 1; j < uniqueEntity[i].length; j++)
@@ -117,8 +118,13 @@ function generateValidator()
                 if(document.getElementById(uniqueEntity[i][0]).value === uniqueEntity[i][j])
                 {
                     alert("Value " + uniqueEntity[i][j] + " already exists for " + uniqueEntity[i][0]);
+                    validState = 0;
                 }
             }
+        }
+        if(validState == 1)
+        {
+            document.getElementById("theForm").submit();
         }
     }
 </script>

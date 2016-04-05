@@ -8,6 +8,10 @@
 
 include("access.php");
 
+
+/*
+ * To be replaced with metadata query.
+ */
 function generateResults($tableResults)
 {
     switch($tableResults)

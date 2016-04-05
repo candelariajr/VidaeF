@@ -77,7 +77,7 @@ function generateValidator()
 <body>
 <div class="container">
     <h2>Add an Employee</h2>
-    <form class ="form-horizontal" role="form" action="submit.php" method="post">
+    <form id="theForm" class ="form-horizontal" role="form" action="submit.php" method="post">
         <input type="hidden" name="table" value="employee"/>
         <fieldset>
             <legend>Personal Information</legend>
@@ -166,6 +166,7 @@ function generateValidator()
 <script>
     function validate()
     {
+        var validState = 1;
         for(var i = 0; i < uniqueEntity.length; i++)
         {
             for(var j = 1; j < uniqueEntity[i].length; j++)
@@ -173,9 +174,15 @@ function generateValidator()
                 if(document.getElementById(uniqueEntity[i][0]).value.replace(/\W/g, '') === uniqueEntity[i][j])
                 {
                     alert("Value " + uniqueEntity[i][j] + " already exists for " + uniqueEntity[i][0]);
+                    validState = 0;
                 }
             }
         }
+        if(validState == 1)
+        {
+            document.getElementById("theForm").submit();
+        }
+
     }
 
     $('#ssn').keyup(function() {
