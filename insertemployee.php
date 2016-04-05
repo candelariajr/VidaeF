@@ -180,6 +180,7 @@ function generateValidator()
         }
         if(validState == 1)
         {
+
             document.getElementById("theForm").submit();
         }
 
