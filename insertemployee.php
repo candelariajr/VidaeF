@@ -166,6 +166,20 @@ function generateValidator()
 <script>
     function validate()
     {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         var validState = 1;
         for(var i = 0; i < uniqueEntity.length; i++)
         {
@@ -183,7 +197,6 @@ function generateValidator()
 
             document.getElementById("theForm").submit();
         }
-
     }
 
     $('#ssn').keyup(function() {
